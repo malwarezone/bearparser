@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.8.11)
+cmake_minimum_required(VERSION 3.12)
 project (re-bear)
 
 # modules:
@@ -26,4 +26,3 @@ add_subdirectory(commander)
 
 # dependencies
 add_dependencies(bearcommander bearparser)
-
