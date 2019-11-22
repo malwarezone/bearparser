@@ -1,6 +1,5 @@
 os:
   - macos
-  - Visual Studio 2015
 
 platform: x64
   - x64
@@ -11,7 +10,8 @@ branches:
    
 install:
 - git submodule update --init --recursive
-- set PATH=C:\Program Files\CMake\bin;%PATH%
+- qt5-default install
+- qt5-qmake install
 
 build:
   verbosity: detailed
@@ -23,28 +23,15 @@ environment:
   artifactName: $(APPVEYOR_PROJECT_NAME)-$(APPVEYOR_REPO_COMMIT)-$(CONFIGURATION)
   matrix:
     - env_arch: "x64"
-      QT5: C:\Qt\5.11\msvc2015_64
     - env_arch: "x86"
-      QT5: C:\Qt\5.11\msvc2015
 
 before_build:
-  - set PATH=%PATH%;%QT5%\bin;%QT5%\lib\cmake
-  - set Qt5Core_DIR=%QT5%
-  - mkdir build
-  - cd build
-  - if [%env_arch%]==[x64] (
-    cmake .. -A x64 )
-  - if [%env_arch%]==[x86] (
-    cmake .. )
+  - cmake --version
+  - qmake -v
     
 build_script:
-  - cmake --build . --config %CONFIGURATION%
-  
-after_build:
-  - mkdir %artifactName%
-  - cp -r commander/%CONFIGURATION%/* %artifactName%
-  - cp %QT5%\bin\Qt5Core.dll %artifactName%
-  
-artifacts:
-  - path: build\%artifactName%
+  - mkdir build
+  - cd build
+  - cmake ..
+  - cmake --build .
   
