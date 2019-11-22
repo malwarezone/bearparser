@@ -40,10 +40,7 @@ for:
       - qmake -v
       - mkdir build
       - cd build
-      - if [%env_arch%]==[x86] (
-        cmake -DCMAKE_OSX_ARCHITECTURES=386 .. )
-      - if [%env_arch%]==[x64] (
-        cmake .. )
+        cmake ..
 
     build_script:
       - cmake --build . --config %CONFIGURATION%
