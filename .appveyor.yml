@@ -36,14 +36,17 @@ for:
      - export PKG_CONFIG_PATH="/usr/local/opt/qt/lib/pkgconfig"
 
     before_build:
-       - cmake --version
-       - qmake -v
-       - mkdir build
-       - cd build
+      - cmake --version
+      - qmake -v
+      - mkdir build
+      - cd build
 
     build_script:
-       - cmake ..
-       - cmake --build . --config %CONFIGURATION%
+      - if [%env_arch%]==[x86] (
+        cmake -DCMAKE_OSX_ARCHITECTURES=386 .. )
+      - if [%env_arch%]==[x64] (
+        cmake .. )
+      - cmake --build . --config %CONFIGURATION%
 
     after_build:
        - ls
