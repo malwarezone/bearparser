@@ -8,7 +8,7 @@ compiler:
   - gcc
 
 before_install:
-  - brew update-reset
+  - brew update
   - brew install qt5
   - export PATH="/usr/local/opt/qt/bin:$PATH"
   - export LDFLAGS="-L/usr/local/opt/qt/lib"
