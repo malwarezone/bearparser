@@ -20,11 +20,11 @@ environment:
   matrix:
     - env_arch: "x64"
     - env_arch: "x86"
-
 for:
   -
-    os:
-     - macOS 
+    matrix:
+      only:
+        - image: macOS
   
     install:
      - git submodule update --init --recursive
@@ -55,9 +55,10 @@ for:
    
 # override settings for Visual Studio 2015
   -
-    os:
-     - Visual Studio 2015
-  
+    matrix:
+      only:
+        - image: Visual Studio 2015
+        
     environment:
       artifactName: $(APPVEYOR_PROJECT_NAME)-$(APPVEYOR_REPO_COMMIT)-$(CONFIGURATION)
       matrix:
