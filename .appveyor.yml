@@ -1,6 +1,6 @@
 image:
-  - macOS
   - Visual Studio 2015
+  - macOS
   
 platform: x64
   - x64
