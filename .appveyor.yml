@@ -38,10 +38,10 @@ for:
       - qmake -v
       - mkdir build
       - cd build
-        cmake ..
 
     build_script:
-      - cmake --build .
+      - cmake ..
+      - cmake --build . --target all
 
     after_build:
        - ls
