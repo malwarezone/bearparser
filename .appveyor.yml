@@ -19,11 +19,8 @@ environment:
   artifactName: $(APPVEYOR_PROJECT_NAME)-$(APPVEYOR_REPO_COMMIT)-$(CONFIGURATION)
   matrix:
     - env_arch: "x64"
-      if [%APPVEYOR_BUILD_WORKER_IMAGE%]==[Visual Studio 2015] (
-      QT5: C:\Qt\5.11\msvc2015_64 )
     - env_arch: "x86"
-      if [%APPVEYOR_BUILD_WORKER_IMAGE%]==[Visual Studio 2015] (
-      QT5: C:\Qt\5.11\msvc2015 )
+
 for:
   -
     matrix:
@@ -64,6 +61,10 @@ for:
       artifactName: $(APPVEYOR_PROJECT_NAME)-$(APPVEYOR_REPO_COMMIT)-$(CONFIGURATION)
 
     before_build:
+      - if [%env_arch%]==[x64] (
+        set QT5=C:\Qt\5.11\msvc2015_64 )
+      - if [%env_arch%]==[x86] (
+        set QT5=C:\Qt\5.11\msvc2015 )
       - set PATH=%PATH%;%QT5%\bin;%QT5%\lib\cmake
       - set Qt5Core_DIR=%QT5%
       - mkdir build
