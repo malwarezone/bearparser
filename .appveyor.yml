@@ -41,7 +41,10 @@ for:
        - cd build
 
     build_script:
-       - cmake ..
+       - if [%env_arch%]==[x64] (
+        cmake .. -A x64 )
+       - if [%env_arch%]==[x86] (
+        cmake .. )
        - cmake --build . --config %CONFIGURATION%
 
     after_build:
@@ -51,7 +54,6 @@ for:
        - path: build
    
 # override settings for Visual Studio 2015
-
   -
     os:
      - Visual Studio 2015
@@ -69,12 +71,12 @@ for:
       - set Qt5Core_DIR=%QT5%
       - mkdir build
       - cd build
+
+    build_script:
       - if [%env_arch%]==[x64] (
         cmake .. -A x64 )
       - if [%env_arch%]==[x86] (
         cmake .. )
-
-    build_script:
       - cmake --build . --config %CONFIGURATION%
 
     after_build:
