@@ -45,7 +45,7 @@ after_build:
    - ls
 
 artifacts:
- - path: build
+   - path: build
 
 # override settings for Visual Studio 2015
 -
