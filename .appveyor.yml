@@ -10,8 +10,7 @@ branches:
    
 install:
 - git submodule update --init --recursive
-- qt5-default install
-- qt5-qmake install
+- brew install qt5
 
 build:
   verbosity: detailed
