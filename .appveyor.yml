@@ -19,11 +19,11 @@ environment:
   artifactName: $(APPVEYOR_PROJECT_NAME)-$(APPVEYOR_REPO_COMMIT)-$(CONFIGURATION)
   matrix:
     - env_arch: "x64"
-      - if [%APPVEYOR_BUILD_WORKER_IMAGE%]==[Visual Studio 2015] (
-        QT5: C:\Qt\5.11\msvc2015_64 )
+      if [%APPVEYOR_BUILD_WORKER_IMAGE%]==[Visual Studio 2015] (
+      QT5: C:\Qt\5.11\msvc2015_64 )
     - env_arch: "x86"
-      - if [%APPVEYOR_BUILD_WORKER_IMAGE%]==[Visual Studio 2015] (
-        QT5: C:\Qt\5.11\msvc2015 )
+      if [%APPVEYOR_BUILD_WORKER_IMAGE%]==[Visual Studio 2015] (
+      QT5: C:\Qt\5.11\msvc2015 )
 for:
   -
     matrix:
