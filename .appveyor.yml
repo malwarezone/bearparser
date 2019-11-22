@@ -11,6 +11,10 @@ branches:
 install:
 - git submodule update --init --recursive
 - brew install qt5
+- echo 'export PATH="/usr/local/opt/qt/bin:$PATH"' >> ~/.bash_profile
+- export LDFLAGS="-L/usr/local/opt/qt/lib"
+- export CPPFLAGS="-I/usr/local/opt/qt/include"
+- export PKG_CONFIG_PATH="/usr/local/opt/qt/lib/pkgconfig"
 
 build:
   verbosity: detailed
