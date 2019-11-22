@@ -5,21 +5,16 @@ os:
   - osx
     
 compiler:
-  - clang
-
-addons:
-  apt:
-    packages:
-      - qt5
+  - gcc
 
 before_install:
   - if [ "$TRAVIS_OS_NAME" = "osx" ]; then brew install qt5; fi
-  
-before_script:
   - export PATH="/usr/local/opt/qt/bin:$PATH"
   - export LDFLAGS="-L/usr/local/opt/qt/lib"
   - export CPPFLAGS="-I/usr/local/opt/qt/include"
   - export PKG_CONFIG_PATH="/usr/local/opt/qt/lib/pkgconfig"
+  
+before_script:
   - cmake --version
   - qmake -v
 
