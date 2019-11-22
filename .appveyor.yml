@@ -37,14 +37,14 @@ before_build:
    - mkdir build
    - cd build
 
- build_script:
+build_script:
    - cmake ..
    - cmake --build . --config %CONFIGURATION%
 
- after_build:
+after_build:
    - ls
 
- artifacts:
+artifacts:
  - path: build
 
 # override settings for Visual Studio 2015
