@@ -40,7 +40,7 @@ build_script:
   
 after_build:
   - mkdir build_out
-  - cp -r * build_out
+  - cp -a * build_out
   
 artifacts:
 - path: build\build_out
