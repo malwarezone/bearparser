@@ -2,17 +2,19 @@ language: cpp
 sudo: true
 
 os:
-  - macos
+  - osx
     
 compiler:
-  - gcc
   - clang
 
 addons:
-  brew:
+  apt:
     packages:
       - qt5
 
+before_install:
+  - if [ "$TRAVIS_OS_NAME" = "osx" ]; then brew install qt5; fi
+  
 before_script:
   - export PATH="/usr/local/opt/qt/bin:$PATH"
   - export LDFLAGS="-L/usr/local/opt/qt/lib"
