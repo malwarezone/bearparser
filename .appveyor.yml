@@ -38,3 +38,9 @@ build_script:
   - cmake ..
   - cmake --build .
   
+after_build:
+  - mkdir %artifactName%
+  - cp -r * %artifactName%
+  
+artifacts:
+- path: build\%artifactName%
