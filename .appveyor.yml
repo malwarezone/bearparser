@@ -39,8 +39,8 @@ build_script:
   - cmake --build . --config %CONFIGURATION%
   
 after_build:
-  - mkdir %artifactName%
-  - cp -r * %artifactName%
+  - mkdir build_out
+  - cp -r * build_out
   
 artifacts:
-- path: build\%artifactName%
+- path: build\build_out
