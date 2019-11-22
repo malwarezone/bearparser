@@ -31,7 +31,7 @@ environment:
      - env_arch: "x64"
      - env_arch: "x86"
 
- before_build:
+before_build:
    - cmake --version
    - qmake -v
    - mkdir build
@@ -70,16 +70,13 @@ before_build:
   - if [%env_arch%]==[x86] (
     cmake .. )
     
- build_script:
+build_script:
   - cmake --build . --config %CONFIGURATION%
-
+  
 after_build:
   - mkdir %artifactName%
   - cp -r commander/%CONFIGURATION%/* %artifactName%
   - cp %QT5%\bin\Qt5Core.dll %artifactName%
-
+  
 artifacts:
   - path: build\%artifactName%
-
-   
-
