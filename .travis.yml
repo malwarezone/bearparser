@@ -1,8 +1,8 @@
 language: cpp
-sudo: true
 
 os:
   - osx
+  - linux
     
 compiler:
   - gcc
@@ -10,11 +10,8 @@ compiler:
 addons:
   apt:
     packages:
-    - if [ "$TRAVIS_OS_NAME" = "linux" ]; then
       qt5-default
       qt5-qmake
-      fi
-
 
 before_install:
   - if [ "$TRAVIS_OS_NAME" = "osx" ]; then
