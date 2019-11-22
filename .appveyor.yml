@@ -15,11 +15,6 @@ build:
 configuration:
   - Release
 
-environment:
-  artifactName: $(APPVEYOR_PROJECT_NAME)-$(APPVEYOR_REPO_COMMIT)-$(CONFIGURATION)
-  matrix:
-    - env_arch: "x64"
-    - env_arch: "x86"
 for:
   -
     matrix:
@@ -55,7 +50,7 @@ for:
     matrix:
       only:
         - image: Visual Studio 2015
-        
+environment:
     environment:
       artifactName: $(APPVEYOR_PROJECT_NAME)-$(APPVEYOR_REPO_COMMIT)-$(CONFIGURATION)
       matrix:
