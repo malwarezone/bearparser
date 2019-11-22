@@ -1,6 +1,6 @@
-os:
-  - macos
+image:
   - Visual Studio 2015
+  - macOS
   
 platform: x64
   - x64
@@ -24,7 +24,7 @@ environment:
 for:
   -
     os:
-     - macos 
+     - macOS 
   
     install:
      - git submodule update --init --recursive
