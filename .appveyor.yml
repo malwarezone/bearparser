@@ -41,7 +41,7 @@ for:
         cmake ..
 
     build_script:
-      - cmake --build . --config %CONFIGURATION%
+      - cmake --build .
 
     after_build:
        - ls
