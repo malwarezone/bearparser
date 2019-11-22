@@ -1,6 +1,6 @@
 image:
-  - Visual Studio 2015
   - macOS
+  - Visual Studio 2015
   
 platform: x64
   - x64
@@ -40,12 +40,12 @@ for:
       - qmake -v
       - mkdir build
       - cd build
-
-    build_script:
       - if [%env_arch%]==[x86] (
         cmake -DCMAKE_OSX_ARCHITECTURES=386 .. )
       - if [%env_arch%]==[x64] (
         cmake .. )
+
+    build_script:
       - cmake --build . --config %CONFIGURATION%
 
     after_build:
