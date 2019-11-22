@@ -42,9 +42,9 @@ for:
 
     build_script:
        - if [%env_arch%]==[x64] (
-        cmake .. -A x64 )
+         cmake .. -A x64 )
        - if [%env_arch%]==[x86] (
-        cmake .. )
+         cmake .. )
        - cmake --build . --config %CONFIGURATION%
 
     after_build:
