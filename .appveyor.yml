@@ -31,12 +31,12 @@ environment:
 before_build:
   - cmake --version
   - qmake -v
-    
-build_script:
   - mkdir build
   - cd build
+  
+build_script:
   - cmake ..
-  - cmake --build .
+  - cmake --build . --config %CONFIGURATION%
   
 after_build:
   - mkdir %artifactName%
