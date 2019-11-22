@@ -14,7 +14,13 @@ build:
 
 configuration:
   - Release
-  
+
+environment:
+  artifactName: $(APPVEYOR_PROJECT_NAME)-$(APPVEYOR_REPO_COMMIT)-$(CONFIGURATION)
+  matrix:
+    - env_arch: "x64"
+    - env_arch: "x86"
+
 for:
   -
     os:
@@ -27,12 +33,6 @@ for:
      - export LDFLAGS="-L/usr/local/opt/qt/lib"
      - export CPPFLAGS="-I/usr/local/opt/qt/include"
      - export PKG_CONFIG_PATH="/usr/local/opt/qt/lib/pkgconfig"
-
-    environment:
-       artifactName: $(APPVEYOR_PROJECT_NAME)-$(APPVEYOR_REPO_COMMIT)-$(CONFIGURATION)
-       matrix:
-         - env_arch: "x64"
-         - env_arch: "x86"
 
     before_build:
        - cmake --version
