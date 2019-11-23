@@ -15,8 +15,6 @@ env:
 addons:
   apt:
     packages:
-    - qt4-default
-    - qt4-qmake
     - qt5-default
     - qt5-qmake
         
@@ -38,7 +36,10 @@ before_install:
       export PATH="/usr/local/opt/qt/bin:$PATH";
       export LDFLAGS="-L/usr/local/opt/qt/lib";
       export CPPFLAGS="-I/usr/local/opt/qt/include";
-      export PKG_CONFIG_PATH="/usr/local/opt/qt/lib/pkgconfig";
+      export PKG_CONFIG_PATH="/usr/local/opt/qt/lib/pkgconfig"
+    else
+      apt-get install qt4-default;
+      apt-get install qt4-qmake;
     fi
     
 before_script:
