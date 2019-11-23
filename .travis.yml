@@ -18,8 +18,6 @@ before_install:
     if [ "$TRAVIS_OS_NAME" == "osx" ]; then
       brew update-reset;
       brew upgrade cmake -v;
-      brew tap cartr/qt4
-      brew tap-pin cartr/qt4
       brew install qt@4
       export PATH="/usr/local/opt/qt/bin:$PATH";
       export LDFLAGS="-L/usr/local/opt/qt/lib";
