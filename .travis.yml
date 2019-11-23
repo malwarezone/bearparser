@@ -8,18 +8,39 @@ compiler:
   - gcc
   - clang
 
+env:
+- QT_VERSION=4
+- QT_VERSION=5
+
 addons:
   apt:
     packages:
-      - qt4-default
-      - qt4-default
-
+      - |
+        if [ "$QT_VERSION" == "4" ]; then
+          - qt4-default
+          - qt4-qmake
+        fi
+      - |
+        if [ "$QT_VERSION" == "5" ]; then
+          - qt5-default
+          - qt5-qmake
+        fi
+        
 before_install:
   - |
     if [ "$TRAVIS_OS_NAME" == "osx" ]; then
       brew update-reset;
       brew upgrade cmake -v;
-      brew install qt@4
+      - |
+        if [ "$QT_VERSION" == "4" ]; then
+          brew tap cartr/qt4
+          brew tap-pin cartr/qt4
+          brew install qt@4
+        fi
+      - |
+        if [ "$QT_VERSION" == "5" ]; then
+          brew install qt5
+        fi
       export PATH="/usr/local/opt/qt/bin:$PATH";
       export LDFLAGS="-L/usr/local/opt/qt/lib";
       export CPPFLAGS="-I/usr/local/opt/qt/include";
