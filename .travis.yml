@@ -54,6 +54,12 @@ before_script:
 script:
   - mkdir build
   - cd build
-  - cmake -D USE_QT4=ON ..
+  - if [ "$QT_VERSION" == "4" ]; then
+    cmake -D USE_QT4=ON ..
+    fi
+  - cd build
+  - if [ "$QT_VERSION" == "5" ]; then
+    cmake -D USE_QT4=OFF ..
+    fi
   - cmake --build .
   - cd ..
